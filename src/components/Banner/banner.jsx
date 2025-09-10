@@ -9,12 +9,12 @@ const Banner = () => {
 		(async () =>{
 			try {
 				const request = await axios.get(requests.fetchNetflixOriginals);
-				// console.log(requests);
+				console.log(requests);
 				setMovie(request.data.results[
 					Math.floor(Math.random()* request.data.results.length)
 				]);
 			} catch (error) {
-				// console.log("error", error);
+				console.log("error", error);
 			}
 		})()
 	}, []);
