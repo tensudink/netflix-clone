@@ -1,6 +1,7 @@
  import React from "react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import "./footer.css";
 
@@ -11,6 +12,7 @@ const Footer = () => {
          <div className="footer-icons">
            <FacebookOutlinedIcon />
            <InstagramIcon />
+           <TwitterIcon/>
            <YouTubeIcon />
          </div>
          <div className="footer_data">

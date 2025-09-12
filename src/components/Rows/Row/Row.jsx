@@ -23,6 +23,17 @@ const Row = ({ title, fetchUrl, isLargeRow}) => {
 			}
 		})()
 	}, [fetchUrl]);
+	const handleHover = (movie) => {
+      movieTrailer(movie?.title || movie?.name || movie?.original_name)
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch((error) => console.error("Trailer not found:", error));
+  };
+    const handleMouseLeave = () => {
+      setTrailerUrl("");
+    };
 
 	const handleClick =(movie) => {
 		if (trailerUrl) {
@@ -49,12 +60,14 @@ const Row = ({ title, fetchUrl, isLargeRow}) => {
 
   return (
 	<div className = "row">
-		<h1>{title}</h1>
+		<h3>{title}</h3>
 		<div className = "row_posters">
 			{movies?.map((movie,index) => (
 				<img 
 				onClick={()=> handleClick(movie)}
 					key={index} src={`${base_url}${isLargeRow ? movie.poster_path :movie.backdrop_path}`} alt={movie.name} 
+					onMouseEnter={() => handleHover(movie)}
+                    onMouseLeave={handleMouseLeave}
 					className ={`row_poster ${isLargeRow && "row_posterLarge"}`}
 					/>
 				))} 
